@@ -2,7 +2,7 @@ FROM jupyter/base-notebook:latest
 
 # Install .NET CLI dependencies
 
-ARG NB_USER=jovyan
+ARG NB_USER=mattsheehan
 ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
@@ -59,6 +59,7 @@ COPY ./notebooks/ ${HOME}/notebooks/
 # Copy package sources
 
 COPY ./NuGet.config ${HOME}/nuget.config
+COPY ./notebooks/housing/HPI_master.csv ${HOME}/notebooks/housing/HPI_master.csv
 
 RUN chown -R ${NB_UID} ${HOME}
 USER ${USER}
